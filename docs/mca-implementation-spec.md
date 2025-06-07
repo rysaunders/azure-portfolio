@@ -39,7 +39,7 @@
 - **Hands-on Implementation:**
   ```
   1. Create MEA Azure AD tenant (meridian.onmicrosoft.com)
-  2. Set up custom domain (meridiancapital.com)
+  2. Set up custom domain (meridianequityadvisors.com)
   3. Create organizational units for Tampa/LA/Chicago offices
   4. Configure users for different roles (executives, advisors, analysts, IT)
   5. Implement initial security defaults
@@ -264,7 +264,7 @@
 MEA-Production/
 ├── Identity/
 │   ├── Azure AD Tenant (meridian.onmicrosoft.com)
-│   ├── Custom Domain (meridiancapital.com)
+│   ├── Custom Domain (meridianequityadvisors.com)
 │   └── Hybrid Connect to on-premises
 ├── Networking/
 │   ├── Hub VNet (Tampa HQ)

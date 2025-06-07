@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Securing MEA: Azure Migration Foundation | Azure Security Portfolio</title>
+    <meta name="description" content="Leading Meridian Equity Advisors' migration from legacy infrastructure to Azure cloud with identity management and security modernization">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .blog-post {
+            max-width: 900px;
+            margin: 100px auto 0;
+            padding: 0 20px;
+            line-height: 1.7;
+        }
+        .post-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .post-meta {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        .post-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        .post-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.5;
+        }
+        .post-content {
+            font-size: 1.1rem;
+        }
+        .post-content h2 {
+            font-size: 1.8rem;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+            border-left: 4px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+        .post-content h3 {
+            font-size: 1.4rem;
+            margin: 2.5rem 0 1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        .post-content p {
+            margin-bottom: 1.5rem;
+        }
+        .post-content ul, .post-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+        .post-content li {
+            margin-bottom: 0.8rem;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-left: 4px solid var(--primary-color);
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .highlight-box h4 {
+            margin: 0 0 1rem 0;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 2rem 0;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+        .phase-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .phase-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .phase-card.completed {
+            border-left: 4px solid var(--success-color);
+            background: linear-gradient(135deg, #f0fff4 0%, #f7fafc 100%);
+        }
+        .phase-card.current {
+            border-left: 4px solid var(--primary-color);
+            background: linear-gradient(135deg, #ebf8ff 0%, #f7fafc 100%);
+        }
+        .phase-card.upcoming {
+            border-left: 4px solid #e2e8f0;
+            opacity: 0.7;
+        }
+        .phase-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .phase-status-badge {
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+        .completed .phase-status-badge {
+            background: var(--success-color);
+            color: white;
+        }
+        .current .phase-status-badge {
+            background: var(--primary-color);
+            color: white;
+        }
+        .upcoming .phase-status-badge {
+            background: #e2e8f0;
+            color: #64748b;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .nav-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        .company-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .company-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2><a href="../../index.html" style="color: var(--primary-color); text-decoration: none;">Azure Security Portfolio</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html" class="nav-link">Blog</a></li>
+                <li><a href="../../labs/" class="nav-link">Labs</a></li>
+                <li><a href="../../certifications/" class="nav-link">Certifications</a></li>
+                <li><a href="../../about.html" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <article class="blog-post">
+        <header class="post-header">
+            <div class="post-meta">
+                <span>📅 June 7, 2025</span>
+                <span>⏱️ 12 min read</span>
+                <span>🏷️ Azure Migration, Identity Management, Week 1</span>
+            </div>
+            <h1 class="post-title">Securing MEA: Azure Migration Foundation</h1>
+            <p class="post-subtitle">Leading Meridian Equity Advisors' migration from legacy infrastructure to Microsoft Azure with a security-first approach to identity management and digital transformation</p>
+        </header>
+
+        <div class="post-content">
+            <div class="highlight-box">
+                <h4>🏢 Client Overview: Meridian Equity Advisors</h4>
+                <p><strong><a href="https://meridianequityadvisors.com" class="company-link" target="_blank">Meridian Equity Advisors</a></strong> is a $3.1 billion investment management firm with 185 employees across three offices (Tampa HQ, Los Angeles, and Chicago). MEA brought me on board to lead their complete migration from legacy on-premises infrastructure to Microsoft Azure, with security and compliance as top priorities.</p>
+            </div>
+
+            <h2>The Challenge: Legacy Infrastructure Modernization</h2>
+
+            <p>When MEA engaged me as their Azure Security Consultant, they were facing the typical challenges of a growing financial services firm:</p>
+
+            <ul>
+                <li><strong>Legacy Active Directory:</strong> On-premises AD with limited modern security features</li>
+                <li><strong>Aging VPN Infrastructure:</strong> Outdated remote access solutions struggling with hybrid work</li>
+                <li><strong>Compliance Gaps:</strong> Manual processes for SEC and SOC 2 requirements</li>
+                <li><strong>Limited Visibility:</strong> Insufficient monitoring and threat detection capabilities</li>
+                <li><strong>Scalability Constraints:</strong> On-premises infrastructure limiting business growth</li>
+            </ul>
+
+            <p>The firm needed a comprehensive cloud migration strategy that would not only modernize their infrastructure but also enhance their security posture to protect $3.1 billion in assets under management.</p>
+
+            <h2>Migration Strategy: Security-First Approach</h2>
+
+            <p>Rather than a traditional "lift and shift" migration, I designed a security-first transformation following Microsoft's Cloud Adoption Framework with these four strategic phases:</p>
+
+            <div class="phase-status">
+                <div class="phase-card completed">
+                    <div class="phase-title">
+                        Phase 1: Identity & Access
+                        <span class="phase-status-badge">✅ Complete</span>
+                    </div>
+                    <p>Establish Azure AD foundation, migrate identities, implement zero-trust principles</p>
+                </div>
+
+                <div class="phase-card current">
+                    <div class="phase-title">
+                        Phase 2: Secure Networking
+                        <span class="phase-status-badge">🔄 Next</span>
+                    </div>
+                    <p>Design hub-and-spoke topology, implement Azure Firewall, establish site-to-site connectivity</p>
+                </div>
+
+                <div class="phase-card upcoming">
+                    <div class="phase-title">
+                        Phase 3: Secure Infrastructure
+                        <span class="phase-status-badge">⏳ Planned</span>
+                    </div>
+                    <p>Migrate compute workloads, secure databases and storage, implement backup and disaster recovery</p>
+                </div>
+
+                <div class="phase-card upcoming">
+                    <div class="phase-title">
+                        Phase 4: Advanced Security
+                        <span class="phase-status-badge">⏳ Planned</span>
+                    </div>
+                    <p>Deploy Microsoft Defender suite, implement Azure Sentinel SIEM, establish SOC capabilities</p>
+                </div>
+            </div>
+
+            <h2>Phase 1 Implementation: Identity Foundation</h2>
+
+            <p>The first phase focused on establishing a robust identity and access management foundation using Azure Active Directory (now Microsoft Entra ID). This phase was critical as identity serves as the new security perimeter in cloud environments.</p>
+
+            <h3>Azure AD Tenant Establishment</h3>
+
+            <p>I began by creating MEA's Azure AD tenant and establishing their corporate identity in the cloud:</p>
+
+            <div class="code-block">
+# Create the MEA Azure AD tenant
+Tenant Name: Meridian Equity Advisors
+Primary Domain: meridianequityadvisors.com
+Tenant ID: 4a2e[redacted]
+Region: United States
+            </div>
+
+            <p>The custom domain verification was crucial for professional email addresses and seamless integration with existing business processes. This ensures all user identities follow the pattern: <code>firstname.lastname@meridianequityadvisors.com</code></p>
+
+            <h3>Organizational Structure Design</h3>
+
+            <p>Working closely with MEA's HR and IT departments, I designed an organizational structure that reflects their business units and supports proper access governance:</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">185</span>
+                    <div class="stat-label">Total User Accounts</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">7</span>
+                    <div class="stat-label">Department Groups</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">12</span>
+                    <div class="stat-label">Security Groups</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">8</span>
+                    <div class="stat-label">Service Principals</div>
+                </div>
+            </div>
+
+            <h4>Department Groups Created:</h4>
+            <ul>
+                <li><strong>Executive Team (5 users):</strong> C-suite and senior leadership</li>
+                <li><strong>Portfolio Management (25 users):</strong> Investment managers and analysts</li>
+                <li><strong>Research & Analytics (30 users):</strong> Equity research and quantitative teams</li>
+                <li><strong>Client Services (45 users):</strong> Client relationship managers and support</li>
+                <li><strong>Operations & Compliance (35 users):</strong> Back office and regulatory compliance</li>
+                <li><strong>IT & Security (15 users):</strong> Technology and cybersecurity teams</li>
+                <li><strong>Administrative (30 users):</strong> HR, finance, and general administration</li>
+            </ul>
+
+            <h4>Security Groups for Data Access:</h4>
+            <ul>
+                <li><strong>Trading System Access:</strong> Authorized trading platform users</li>
+                <li><strong>Financial Data Access:</strong> Users requiring access to sensitive financial data</li>
+                <li><strong>Client PII Access:</strong> Personnel handling personally identifiable information</li>
+                <li><strong>Compliance Reporting:</strong> Users generating regulatory reports</li>
+            </ul>
+
+            <h3>Service Principal Strategy</h3>
+
+            <p>For MEA's automated systems and applications, I implemented a comprehensive service principal strategy following the principle of least privilege:</p>
+
+            <div class="code-block">
+# Key service principals created:
+MEA-TradingSystem: Portfolio management application access
+MEA-BackupService: Automated backup operations
+MEA-MonitoringAgent: Security monitoring and alerting
+MEA-DataAnalytics: Automated financial data processing
+MEA-ReportingEngine: Compliance report generation
+MEA-WebsiteDeployment: CI/CD pipeline for digital assets
+            </div>
+
+            <p>Each service principal was configured with specific scopes and time-limited certificates, ensuring that automated systems have only the access they need for their designated functions.</p>
+
+            <h2>Digital Presence Modernization</h2>
+
+            <p>Alongside the identity migration, I led the modernization of MEA's digital presence by migrating their legacy website to Azure infrastructure.</p>
+
+            <h3>Azure Static Web Apps Implementation</h3>
+
+            <p>The legacy website migration showcased several key Azure capabilities:</p>
+
+            <ul>
+                <li><strong>Modern Hosting:</strong> Migrated from traditional web hosting to Azure Static Web Apps</li>
+                <li><strong>Global CDN:</strong> Implemented worldwide content distribution for optimal performance</li>
+                <li><strong>SSL/TLS:</strong> Automatic HTTPS certificate management and renewal</li>
+                <li><strong>Custom Domain:</strong> Seamless integration with meridianequityadvisors.com</li>
+                <li><strong>Security Headers:</strong> Implemented comprehensive security headers for web protection</li>
+            </ul>
+
+            <h3>DevOps Pipeline Integration</h3>
+
+            <p>I established a CI/CD pipeline using GitHub Actions that demonstrates modern deployment practices:</p>
+
+            <div class="code-block">
+# Automated deployment workflow:
+1. Code changes pushed to private GitHub repository
+2. GitHub Actions triggers Azure Static Web Apps build
+3. Automated deployment to Azure infrastructure with security headers
+4. SSL certificate validation and DNS propagation verification
+5. Performance and basic security validation
+            </div>
+
+            <p>This approach ensures that any updates to MEA's digital presence are automatically tested and deployed without manual intervention. Future iterations will include comprehensive security scanning and vulnerability assessment in the pipeline.</p>
+
+            <h2>Security Configurations Implemented</h2>
+
+            <p>Throughout Phase 1, I implemented several critical security measures that establish the foundation for MEA's cloud security posture:</p>
+
+            <h3>Identity Security Measures</h3>
+            <ul>
+                <li><strong>Azure AD Security Defaults:</strong> Enabled to provide baseline protection</li>
+                <li><strong>Strong Password Policies:</strong> Enforced complex passwords and regular rotation</li>
+                <li><strong>Account Lockout Policies:</strong> Protection against brute force attacks</li>
+                <li><strong>Privileged Access Management:</strong> Elevated access controls for administrative accounts</li>
+            </ul>
+
+            <h3>Web Application Security</h3>
+            <ul>
+                <li><strong>Azure-Managed SSL/TLS:</strong> Automatic certificate provisioning and renewal</li>
+                <li><strong>Global CDN:</strong> Built-in Azure Front Door for worldwide content distribution</li>
+                <li><strong>DDoS Basic Protection:</strong> Azure's default protection against volumetric attacks</li>
+                <li><strong>Security Headers Implementation:</strong> HSTS, CSP, X-Frame-Options, and other protective headers</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>🔒 Security Implementation Status</h4>
+                <p>MEA's Azure infrastructure deployment included comprehensive security header implementation, achieving a <strong>B+ security rating</strong> on Mozilla Observatory. The next iteration will optimize Content Security Policy further to reach A+ rating, while maintaining the excellent <strong>95/100</strong> Google PageSpeed performance score.</p>
+            </div>
+
+            <h2>Business Impact and Lessons Learned</h2>
+
+            <h3>Immediate Benefits Realized</h3>
+            <ul>
+                <li><strong>Enhanced Security Posture:</strong> Modern identity controls and threat protection</li>
+                <li><strong>Improved User Experience:</strong> Single sign-on capabilities and faster web performance</li>
+                <li><strong>Operational Efficiency:</strong> Automated deployment and reduced manual administrative tasks</li>
+                <li><strong>Compliance Readiness:</strong> Foundation for SOC 2 and SEC regulatory requirements</li>
+                <li><strong>Cost Optimization:</strong> Elimination of legacy hosting and VPN infrastructure costs</li>
+            </ul>
+
+            <h3>Key Technical Insights</h3>
+            <ul>
+                <li><strong>Identity-First Approach:</strong> Establishing robust identity management early simplifies all subsequent migrations</li>
+                <li><strong>Gradual Migration Strategy:</strong> Phased approach reduces risk and allows for learning and adjustment</li>
+                <li><strong>Security by Design:</strong> Implementing security controls from day one is more effective than retrofitting</li>
+                <li><strong>Documentation Importance:</strong> Thorough documentation of configurations and decisions supports future audits</li>
+            </ul>
+
+            <h3>Financial Services Considerations</h3>
+            <p>Working with an investment management firm provided unique insights into financial services security requirements:</p>
+            <ul>
+                <li><strong>Regulatory Compliance:</strong> SEC and FINRA requirements influence every security decision</li>
+                <li><strong>Data Classification:</strong> Client financial information requires the highest protection levels</li>
+                <li><strong>Audit Trails:</strong> Comprehensive logging and monitoring for regulatory examinations</li>
+                <li><strong>Business Continuity:</strong> Trading operations cannot tolerate extended downtime</li>
+            </ul>
+
+            <h2>Looking Ahead: Phase 2 Network Security</h2>
+
+            <p>With MEA's identity foundation solidly established, Phase 2 will focus on implementing secure networking architecture to support their multi-office operations and remote workforce:</p>
+
+            <h3>Planned Network Security Implementations</h3>
+            <ul>
+                <li><strong>Hub-and-Spoke Topology:</strong> Central security controls with distributed office connectivity</li>
+                <li><strong>Azure Firewall Deployment:</strong> Next-generation firewall with threat intelligence</li>
+                <li><strong>Network Segmentation:</strong> Micro-segmentation for trading systems and client data</li>
+                <li><strong>Site-to-Site VPN:</strong> Secure connectivity between Tampa, LA, and Chicago offices</li>
+                <li><strong>Network Security Groups:</strong> Granular traffic filtering and access controls</li>
+                <li><strong>DDoS Protection Standard:</strong> Enhanced protection for internet-facing resources</li>
+            </ul>
+
+            <h3>Security Monitoring Foundation</h3>
+            <p>Phase 2 will also begin the implementation of comprehensive security monitoring capabilities that will be fully realized in Phase 4:</p>
+            <ul>
+                <li><strong>Azure Monitor Integration:</strong> Centralized logging and metrics collection</li>
+                <li><strong>Network Watcher:</strong> Network performance and security analysis</li>
+                <li><strong>Traffic Analytics:</strong> Flow monitoring and anomaly detection</li>
+                <li><strong>Security Center Integration:</strong> Unified security management across all resources</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4>📊 Success Metrics - Phase 1</h4>
+                <p><strong>Identity Management:</strong> 100% of MEA employees successfully migrated to Azure AD with zero authentication issues<br>
+                <strong>Digital Presence:</strong> Website performance improved by 300% with 99.9% uptime on Azure infrastructure<br>
+                <strong>Security Implementation:</strong> Achieved B+ security rating with comprehensive threat protection headers<br>
+                <strong>Project Timeline:</strong> Phase 1 completed on schedule with zero business disruption</p>
+            </div>
+
+            <h2>Conclusion</h2>
+
+            <p>Phase 1 of MEA's Azure migration has successfully established a robust foundation for their cloud transformation. The identity and access management implementation provides the security controls necessary for a financial services firm while enabling the scalability and modern capabilities they need for continued growth.</p>
+
+            <p>The combination of properly structured Azure AD tenancy, comprehensive identity governance, and modernized digital presence creates a solid platform for the remaining migration phases. Most importantly, this security-first approach ensures that MEA's $3.1 billion in assets under management and their clients' sensitive financial information are protected by enterprise-grade security controls from day one.</p>
+
+            <p>The success of Phase 1 validates the strategic decision to prioritize identity and access management as the foundation of cloud security. As we move into Phase 2, the network security implementations will build upon this identity foundation to create a comprehensive defense-in-depth strategy that meets the stringent requirements of the financial services industry.</p>
+
+            <p><strong>Next week:</strong> I'll document the Phase 2 planning process and begin implementation of MEA's secure network architecture, including the hub-and-spoke topology design and Azure Firewall deployment strategy.</p>
+        </div>
+
+        <div class="nav-links">
+            <a href="../index.html" class="nav-link">← Back to Blog</a>
+            <a href="#" class="nav-link">Phase 2: Network Security →</a>
+        </div>
+    </article>
+</body>
+</html>

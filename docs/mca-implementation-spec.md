@@ -1,8 +1,8 @@
-# AZ-500 Implementation Spec: Meridian Capital Advisors
+# AZ-500 Implementation Spec: Meridian Equity Advisors
 
 ## 🏢 Organization Profile
 
-**Company:** Meridian Capital Advisors (MCA)  
+**Company:** Meridian Equity Advisors (MEA)  
 **Industry:** Investment Management & Financial Advisory  
 **Size:** 185 employees  
 **Locations:** Tampa (HQ), Los Angeles, Chicago  
@@ -32,13 +32,13 @@
 - Configure Conditional Access
 - Configure Azure AD Privileged Identity Management
 
-#### MCA Implementation Scenarios:
+#### MEA Implementation Scenarios:
 
 **Week 1: Foundation Identity Setup**
-- **Scenario:** MCA needs to establish Azure AD tenant and migrate from on-premises AD
+- **Scenario:** MEA needs to establish Azure AD tenant and migrate from on-premises AD
 - **Hands-on Implementation:**
   ```
-  1. Create MCA Azure AD tenant (meridian.onmicrosoft.com)
+  1. Create MEA Azure AD tenant (meridian.onmicrosoft.com)
   2. Set up custom domain (meridiancapital.com)
   3. Create organizational units for Tampa/LA/Chicago offices
   4. Configure users for different roles (executives, advisors, analysts, IT)
@@ -46,7 +46,7 @@
   ```
 
 **Week 2: Advanced Identity & Access**
-- **Scenario:** MCA requires sophisticated access controls for financial data
+- **Scenario:** MEA requires sophisticated access controls for financial data
 - **Hands-on Implementation:**
   ```
   1. Configure Conditional Access for high-value assets
@@ -57,7 +57,7 @@
   ```
 
 **Blog Post Structure:**
-- **Business Challenge:** "MCA's outdated identity management poses compliance risks"
+- **Business Challenge:** "MEA's outdated identity management poses compliance risks"
 - **AZ-500 Learning:** Technical concepts and Microsoft best practices
 - **Implementation:** Step-by-step Azure portal/CLI screenshots
 - **Security Analysis:** "What attack vectors does this address?"
@@ -73,10 +73,10 @@
 - Configure Web Application Firewall
 - Implement Azure Bastion and Just-in-Time VM access
 
-#### MCA Implementation Scenarios:
+#### MEA Implementation Scenarios:
 
 **Week 3: Network Security Architecture**
-- **Scenario:** MCA needs secure, segmented network for different business functions
+- **Scenario:** MEA needs secure, segmented network for different business functions
 - **Hands-on Implementation:**
   ```
   1. Design hub-and-spoke network topology
@@ -87,7 +87,7 @@
   ```
 
 **Week 4: Advanced Platform Protection**
-- **Scenario:** MCA's web applications need protection from sophisticated attacks
+- **Scenario:** MEA's web applications need protection from sophisticated attacks
 - **Hands-on Implementation:**
   ```
   1. Deploy Azure Application Gateway with WAF
@@ -107,10 +107,10 @@
 - Configure Azure Key Vault
 - Configure application security features
 
-#### MCA Implementation Scenarios:
+#### MEA Implementation Scenarios:
 
 **Week 5: Data Protection Strategy**
-- **Scenario:** MCA must protect sensitive client financial data and trading algorithms
+- **Scenario:** MEA must protect sensitive client financial data and trading algorithms
 - **Hands-on Implementation:**
   ```
   1. Configure Always Encrypted for SQL Database
@@ -121,7 +121,7 @@
   ```
 
 **Week 6: Application Security**
-- **Scenario:** MCA's trading platform and client portal need comprehensive security
+- **Scenario:** MEA's trading platform and client portal need comprehensive security
 - **Hands-on Implementation:**
   ```
   1. Configure App Service security features
@@ -141,10 +141,10 @@
 - Configure Azure Security Center
 - Configure Azure Monitor
 
-#### MCA Implementation Scenarios:
+#### MEA Implementation Scenarios:
 
 **Week 7: Security Operations Center (SOC)**
-- **Scenario:** MCA needs 24/7 security monitoring and incident response
+- **Scenario:** MEA needs 24/7 security monitoring and incident response
 - **Hands-on Implementation:**
   ```
   1. Deploy Azure Sentinel SIEM solution
@@ -155,7 +155,7 @@
   ```
 
 **Week 8: Advanced Threat Detection**
-- **Scenario:** MCA faces sophisticated threats targeting financial institutions
+- **Scenario:** MEA faces sophisticated threats targeting financial institutions
 - **Hands-on Implementation:**
   ```
   1. Configure User and Entity Behavior Analytics (UEBA)
@@ -167,12 +167,12 @@
 
 ---
 
-## 🎯 MCA Job-Specific Extensions
+## 🎯 MEA Job-Specific Extensions
 
 ### Beyond AZ-500: Practical Job Skills (Weeks 9-12)
 
 **Week 9: Phishing Analysis & Response**
-- **Scenario:** MCA employees receive sophisticated phishing targeting financial credentials
+- **Scenario:** MEA employees receive sophisticated phishing targeting financial credentials
 - **Implementation:**
   ```
   1. Configure Microsoft Defender for Office 365
@@ -183,7 +183,7 @@
   ```
 
 **Week 10: Endpoint Protection Management**
-- **Scenario:** MCA's remote workforce needs comprehensive endpoint security
+- **Scenario:** MEA's remote workforce needs comprehensive endpoint security
 - **Implementation:**
   ```
   1. Deploy Microsoft Defender for Endpoint
@@ -194,7 +194,7 @@
   ```
 
 **Week 11: Security Architecture & Governance**
-- **Scenario:** MCA needs enterprise security framework and policies
+- **Scenario:** MEA needs enterprise security framework and policies
 - **Implementation:**
   ```
   1. Develop cloud security architecture documentation
@@ -205,7 +205,7 @@
   ```
 
 **Week 12: Incident Response & Business Continuity**
-- **Scenario:** MCA needs robust incident response and disaster recovery
+- **Scenario:** MEA needs robust incident response and disaster recovery
 - **Implementation:**
   ```
   1. Create comprehensive incident response plan
@@ -219,10 +219,10 @@
 
 ## 📝 Blog Post Template Structure
 
-### Weekly Post Format: "Securing MCA: [Topic] Implementation"
+### Weekly Post Format: "Securing MEA: [Topic] Implementation"
 
 #### Section 1: Business Context (10%)
-- MCA's specific challenge or requirement
+- MEA's specific challenge or requirement
 - Compliance/regulatory drivers
 - Business impact of security gaps
 
@@ -243,10 +243,10 @@
 - Integration with other security controls
 - Monitoring and alerting setup
 
-### Lab Documentation Format: "MCA Lab [#]: [Specific Implementation]"
+### Lab Documentation Format: "MEA Lab [#]: [Specific Implementation]"
 
 #### Lab Structure:
-1. **Business Objective:** Why MCA needs this
+1. **Business Objective:** Why MEA needs this
 2. **Prerequisites:** Required knowledge and resources
 3. **Architecture Overview:** Design decisions and topology
 4. **Implementation Steps:** Detailed technical procedures
@@ -261,7 +261,7 @@
 
 ### Azure Environment Structure
 ```
-MCA-Production/
+MEA-Production/
 ├── Identity/
 │   ├── Azure AD Tenant (meridian.onmicrosoft.com)
 │   ├── Custom Domain (meridiancapital.com)
@@ -301,13 +301,13 @@ MCA-Production/
 ## 🎯 Success Metrics
 
 ### Learning Validation
-- [ ] Can implement MCA's complete Azure security architecture
+- [ ] Can implement MEA's complete Azure security architecture
 - [ ] Able to explain business justification for each security control
 - [ ] Demonstrates cost-effective security solutions
 - [ ] Shows compliance alignment with financial regulations
 
 ### Portfolio Demonstration
-- [ ] Complete MCA case study with before/after security posture
+- [ ] Complete MEA case study with before/after security posture
 - [ ] Professional documentation suitable for client presentations
 - [ ] Quantified security improvements and cost benefits
 - [ ] Integration story showing enterprise thinking

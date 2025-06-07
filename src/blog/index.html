@@ -26,68 +26,85 @@
         </div>
     </nav>
 
-    <main class="blog-main">
+    <section class="hero" style="padding: 120px 0 80px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
         <div class="container">
-            <header class="blog-header">
-                <h1>Security Learning Journey</h1>
-                <p>Documenting my transition from traditional penetration testing to Azure cloud security engineering through hands-on experience and practical implementation.</p>
-            </header>
+            <div class="section-header" style="text-align: center; margin-bottom: 0;">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem;">Security Learning Journey</h1>
+                <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">Documenting my transition from traditional penetration testing to Azure cloud security engineering through hands-on experience and practical implementation.</p>
+            </div>
+        </div>
+    </section>
 
-            <section class="blog-posts">
-                <article class="blog-post-card">
-                    <div class="post-meta">
+    <section class="recent-updates" style="padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest Blog Posts</h2>
+                <p>Practical insights from real-world Azure security implementations</p>
+            </div>
+            
+            <div class="updates-grid">
+                <article class="update-card blog-card">
+                    <div class="card-header">
+                        <span class="card-type">Week 1 Update</span>
                         <time datetime="2025-06-07">June 7, 2025</time>
-                        <span class="post-category">Azure Migration</span>
-                        <span class="reading-time">12 min read</span>
                     </div>
-                    <h2><a href="posts/2025-06-07-week-1-azure-fundamentals.html">Securing MEA: Azure Migration Foundation</a></h2>
+                    <h3><a href="posts/2025-06-07-week-1-azure-fundamentals.html" style="color: var(--text-primary); text-decoration: none;">Securing MEA: Azure Migration Foundation</a></h3>
                     <p>Leading Meridian Equity Advisors' migration from legacy infrastructure to Microsoft Azure with a security-first approach to identity management and digital transformation. This first phase focuses on establishing robust Azure AD foundation and modernizing digital presence.</p>
-                    <div class="post-tags">
-                        <span class="tag">Azure AD</span>
-                        <span class="tag">Identity Management</span>
-                        <span class="tag">Financial Services</span>
-                        <span class="tag">Cloud Migration</span>
+                    <div style="margin: 1.5rem 0; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span style="background: var(--primary-color); color: white; padding: 4px 12px; border-radius: 16px; font-size: 0.85rem; font-weight: 500;">Azure AD</span>
+                        <span style="background: var(--primary-color); color: white; padding: 4px 12px; border-radius: 16px; font-size: 0.85rem; font-weight: 500;">Identity Management</span>
+                        <span style="background: var(--primary-color); color: white; padding: 4px 12px; border-radius: 16px; font-size: 0.85rem; font-weight: 500;">Financial Services</span>
+                        <span style="background: var(--primary-color); color: white; padding: 4px 12px; border-radius: 16px; font-size: 0.85rem; font-weight: 500;">Cloud Migration</span>
                     </div>
                     <a href="posts/2025-06-07-week-1-azure-fundamentals.html" class="read-more">Read Full Post →</a>
                 </article>
-            </section>
-
-            <aside class="blog-sidebar">
-                <div class="sidebar-section">
-                    <h3>Learning Progress</h3>
-                    <div class="progress-item">
-                        <span class="progress-label">AZ-500 Study Plan</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 25%"></div>
-                        </div>
-                        <small>Week 1 of 12 Complete</small>
-                    </div>
-                </div>
-
-                <div class="sidebar-section">
-                    <h3>Categories</h3>
-                    <ul class="category-list">
-                        <li><a href="#" data-category="azure-fundamentals">Azure Fundamentals</a> <span>(1)</span></li>
-                        <li><a href="#" data-category="identity-management">Identity Management</a> <span>(1)</span></li>
-                        <li><a href="#" data-category="cloud-migration">Cloud Migration</a> <span>(1)</span></li>
-                        <li><a href="#" data-category="security-implementation">Security Implementation</a> <span>(1)</span></li>
-                    </ul>
-                </div>
-
-                <div class="sidebar-section">
-                    <h3>Recent Tags</h3>
-                    <div class="tag-cloud">
-                        <span class="tag">Azure AD</span>
-                        <span class="tag">Identity Management</span>
-                        <span class="tag">Financial Services</span>
-                        <span class="tag">Cloud Migration</span>
-                        <span class="tag">Security Headers</span>
-                        <span class="tag">Service Principals</span>
-                    </div>
-                </div>
-            </aside>
+            </div>
         </div>
-    </main>
+    </section>
+
+    <section style="background: var(--light-color); padding: 60px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Learning Progress</h2>
+                <p>Track my progress through the AZ-500 certification journey</p>
+            </div>
+            
+            <div style="max-width: 600px; margin: 0 auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-sm);">
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem; color: var(--primary-color);">AZ-500 Study Plan</h3>
+                    <div class="progress-bar" style="background: #e9ecef; height: 12px; border-radius: 6px; overflow: hidden;">
+                        <div class="progress-fill" style="width: 25%; background: var(--gradient-primary); height: 100%; border-radius: 6px; transition: width 0.8s ease;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                        <span>Week 1 of 12 Complete</span>
+                        <span>25%</span>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div>
+                        <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Focus Areas</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem; display: flex; align-items: center;"><span style="color: var(--success-color); margin-right: 0.5rem;">✓</span> Azure Fundamentals</li>
+                            <li style="margin-bottom: 0.5rem; display: flex; align-items: center;"><span style="color: var(--success-color); margin-right: 0.5rem;">✓</span> Identity Management</li>
+                            <li style="margin-bottom: 0.5rem; display: flex; align-items: center;"><span style="color: var(--warning-color); margin-right: 0.5rem;">⏳</span> Network Security</li>
+                            <li style="margin-bottom: 0.5rem; display: flex; align-items: center;"><span style="color: var(--text-light); margin-right: 0.5rem;">◯</span> Compute Security</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 style="margin-bottom: 1rem; color: var(--text-primary);">Current Topics</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 0.5rem; color: var(--text-secondary);">Azure AD Configuration</li>
+                            <li style="margin-bottom: 0.5rem; color: var(--text-secondary);">Service Principals</li>
+                            <li style="margin-bottom: 0.5rem; color: var(--text-secondary);">Security Headers</li>
+                            <li style="margin-bottom: 0.5rem; color: var(--text-secondary);">Static Web Apps</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
